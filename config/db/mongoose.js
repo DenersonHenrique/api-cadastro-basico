@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 module.exports = function () {
     mongoose.Promise = global.Promise;
-
+    //Conexão com mongo db.
     let db = mongoose.connect(config.db, { promiseLibrary: require(bluebird), useMongoCliente: true });
 
     db.then((conn) => {

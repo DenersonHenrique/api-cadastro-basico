@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// Produto Modelo
+// Produto Modelo(Collection)
 let ProductSchema = new Schema({
     product_id: { type: Number, required: false },
     name: { type: String, required: true },
