@@ -1,4 +1,4 @@
-version: 3
+version: '3'
 services:
   database:
     image: mongo:4.0
@@ -6,9 +6,8 @@ services:
     ports:
       - 3000:3001
   backend:
-    image: nginx:1.13
     container_name: backend.api.cadastro
-    enviroment:
+    environment:
       - NODE_ENV=production
     ports:
       - 3000:3000
