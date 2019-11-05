@@ -6,13 +6,13 @@ const mongoose = require('mongoose');
 module.exports = function () {
     mongoose.Promise = global.Promise;
     //Conexão com mongo db.
-    let db = mongoose.connect(config.db);
+    let db = mongoose.connect(config.db, { useUnifiedTopology: true, useNewUrlParser: true });
 
     db.then((conn) => {
         console.log('Conectado com MongoDB');
     })
         .catch((err) => {
-            console.log('Ocorreu erro ao tentar conectar com MongoDB');
+            console.log(err);
         })
 
     // Registrar schemas e modelos
