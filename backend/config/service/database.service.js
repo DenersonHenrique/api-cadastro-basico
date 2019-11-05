@@ -14,6 +14,17 @@ class DataBaseService {
         });
     }
 
+    getAll(collection) {
+        return new Promise((resolve, reject) => {
+            collection.find(function (error, object) {
+                if (!error)
+                    resolve(object);
+                else
+                    reject(error);
+            });
+        });
+    }
+
 }
 
 module.exports = DataBaseService;
