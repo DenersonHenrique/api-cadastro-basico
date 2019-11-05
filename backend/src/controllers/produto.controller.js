@@ -14,6 +14,7 @@ exports.post = async (req, res, next) => {
         product.attribute = data.attribute;
         product.category = data.category;
         result = await modelProduct.productPost(product);
+        res.status(200).json(result);
     } catch (error) {
         console.log(error.message);
     }

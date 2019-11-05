@@ -6,17 +6,14 @@ class DataBaseService {
 
     save(collection) {
         return new Promise((resolve, reject) => {
-            mongoose().on('connected', function () {
-                collection.save().then((doc) => {
-                    resolve(doc)
-                }, error => {
-                    reject(error)
-                })
-            }).on('disconnected', function () {
-                reject("Falha ao abrir conexão com o banco de dados");
+            collection.save().then((doc) => {
+                resolve(doc);
+            }, error => {
+                reject(error);
             });
-        })
+        });
     }
+
 }
 
 module.exports = DataBaseService;
