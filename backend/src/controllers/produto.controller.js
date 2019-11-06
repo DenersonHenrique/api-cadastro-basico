@@ -35,7 +35,7 @@ exports.getById = async (req, res, next) => {
     let id = req.params.id;
     try {
         const Products = require('mongoose').model('Product');
-        let result = await modelProduct.productGet(Products, id);
+        let result = await modelProduct.productGetById(Products, id);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json(error.message);

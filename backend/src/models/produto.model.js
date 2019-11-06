@@ -10,7 +10,7 @@ module.exports.productGet = async (product) => {
     return await dataBaseService.getAll(product);// Get items list.
 }
 
-module.exports.productGet = async (product, id) => {
+module.exports.productGetById = async (product, id) => {
     let dataBaseService = new DataBaseService();
     return await dataBaseService.getById(product, id);// Get item by id.
 }
