@@ -1,9 +1,9 @@
 'use strict'
 const mongoose = require('../db/mongoose');
-// Salvar coleção no Banco de Dados
+
 class DataBaseService {
     constructor() {}
-
+    // Save items.
     save(collection) {
         return new Promise((resolve, reject) => {
             collection.save().then((doc) => {
@@ -13,7 +13,7 @@ class DataBaseService {
             });
         });
     }
-
+    // Get items list.
     getAll(collection) {
         return new Promise((resolve, reject) => {
             collection.find(function (error, object) {
