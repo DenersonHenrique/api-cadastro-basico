@@ -1,5 +1,4 @@
 const modelProduct = require('../models/produto.model');
-const response = require('../../config/response');
 
 // POST Save product.
 exports.post = async (req, res, next) => {
@@ -14,9 +13,9 @@ exports.post = async (req, res, next) => {
         product.attribute = data.attribute;
         product.category = data.category;
         result = await modelProduct.productPost(product);
-        response.responseApi(result, req, res);
+        res.status(200).json(result);
     } catch (error) {
-        response.responseApi(error, req, res);
+        res.status(400).json(error.message);
     }
 }
 
@@ -25,8 +24,20 @@ exports.get = async (req, res, next) => {
     try {
         const Products = require('mongoose').model('Product');
         let result = await modelProduct.productGet(Products);
-        response.responseApi(result, req, res);
+        res.status(200).json(result);
     } catch (error) {
-        response.responseApi(error, req, res);
+        res.status(400).json(error.message);
+    }
+}
+
+// GET item por id
+exports.getById = async (req, res, next) => {
+    let id = req.params.id;
+    try {
+        const Products = require('mongoose').model('Product');
+        let result = await modelProduct.productGet(Products, id);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(400).json(error.message);
     }
 }

@@ -24,6 +24,17 @@ class DataBaseService {
             });
         });
     }
+    // Get item by id.
+    getById(collection, idCollection) {
+        return new Promise((resolve, reject) => {
+            collection.findOne({'_id': idCollection}, function (error, object) {
+                if (!error)
+                    resolve(object);
+                else
+                    reject(error);
+            });
+        });
+    }
 
 }
 
