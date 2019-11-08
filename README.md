@@ -1,4 +1,4 @@
-# api-cadastro-basico
+# node-api-CRUD
 
 Node | Mongo | Docker - CRUD básico.
 Api de Cadastro simples com node e mongodb.
@@ -10,9 +10,9 @@ Aplicação executável em ambiente docker.
 
 ### Installing
 
-Iniciar aplicação em um ambiente [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).
-1 - No terminal acessar diretório raiz do projeto;
-2 - Executar comando 'docker-compose up'.
+Iniciar aplicação em um ambiente [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).  +
+* No terminal acessar diretório raiz do projeto;
+* Executar comando 'docker-compose up'.
 
 ## Authors
 
