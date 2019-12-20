@@ -30,12 +30,37 @@ exports.get = async (req, res, next) => {
     }
 }
 
-// GET item por id
+// GET Product by id
 exports.getById = async (req, res, next) => {
     let id = req.params.id;
     try {
         const Products = require('mongoose').model('Product');
         let result = await modelProduct.productGetById(Products, id);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+}
+
+// UPDATE Product
+exports.update = async (req, res, next) => {
+    let id = req.params.id;
+    try {
+        const Products = require('mongose').model(Product);
+        let result = await modelProduct.productUpdate(Products, id);
+        res.status(200).json(result);
+
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+}
+
+// DELETE Product
+exports.delete = async (req, res, next) => {
+    let id = req.params.id;
+    try {
+        const Products = require('mongose').model(Product);
+        let result = await modelProduct.productDelete(Products, id);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json(error.message);

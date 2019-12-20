@@ -10,7 +10,7 @@ Aplicação executável em ambiente docker.
 
 ### Installing
 
-Iniciar aplicação em um ambiente [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).  +
+Iniciar aplicação em um ambiente [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).
 * No terminal acessar diretório raiz do projeto;
 * Executar comando 'docker-compose up'.
 
