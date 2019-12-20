@@ -46,7 +46,7 @@ exports.getById = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     let id = req.params.id;
     try {
-        const Products = require('mongose').model(Product);
+        const Products = require('mongoose').model(Product);
         let result = await modelProduct.productUpdate(Products, id);
         res.status(200).json(result);
 
@@ -59,7 +59,7 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
     let id = req.params.id;
     try {
-        const Products = require('mongose').model(Product);
+        const Products = require('mongoose').model(Product);
         let result = await modelProduct.productDelete(Products, id);
         res.status(200).json(result);
     } catch (error) {
