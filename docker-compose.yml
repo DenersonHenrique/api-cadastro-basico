@@ -6,7 +6,7 @@ services:
     ports:
       - 3000:3001
   backend:
-    image: node:12.9.1
+    build: ./backend .
     container_name: backend.api.cadastro
     volumes:
       - ./backend:/usr/src/app
