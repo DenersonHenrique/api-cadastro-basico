@@ -6,7 +6,7 @@ services:
     ports:
       - 3000:3001
   backend:
-    build: ./backend .
+    build: ./backend
     container_name: backend.api.cadastro
     environment:
       - NODE_ENV=production
