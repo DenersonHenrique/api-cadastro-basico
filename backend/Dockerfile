@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Install dependences
 COPY package.json /usr/src/app/
-RUN npm install
+# RUN npm install
 
 ENV NODE_ENV=production
 

@@ -5,8 +5,9 @@ services:
     container_name: mongodb.api.cadastro
     ports:
       - 3000:3001
+    network_mode: host
   backend:
-    build: ./backend .
+    build: ./backend
     container_name: backend.api.cadastro
     volumes:
       - ./backend:/usr/src/app

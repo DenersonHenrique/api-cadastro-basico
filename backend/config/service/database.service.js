@@ -3,9 +3,8 @@ const mongoose = require('../db/mongoose');
 
 class DataBaseService {
     constructor() {}
-    // Save items.
+    // Save item.
     save(collection) {
-        console.log(collection);
         return new Promise((resolve, reject) => {
             collection.save().then((doc) => {
                 resolve(doc);
@@ -33,7 +32,9 @@ class DataBaseService {
     // Update item
     updateById(collection, idCollection) {
         return new Promise((resolve, reject) => {
-            collection.update({'_id': idCollection}, function (error, object) {
+            let valuesUpdate = { $set: {name: "Iphone"} };
+            collection.updateOne({ '_id': idCollection }, valuesUpdate, function (error, object) {
+                console.log(object);
                 !error ? resolve(object) : reject(error);
             });
         });
@@ -41,7 +42,7 @@ class DataBaseService {
     // Delete item
     deleteById(collection, idCollection) {
         return new Promise((resolve, reject) => {
-            collection.remove({ '_id': idCollection }, function (error, object) {
+            collection.deleteOne({ '_id': idCollection }, function (error, object) {
                 !error ? resolve(object) : reject(error);
             });
         })
