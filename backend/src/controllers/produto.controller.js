@@ -1,5 +1,8 @@
 const modelProduct = require('../models/produto.model');
 const response = require('../../config/response');// Objeto de resposta da api.
+const responseHttp = require('../helpers/httpsResponse');// Objeto de resposta HTTP.
+const statusCodeHttp = require('../helpers/httpStatusCode');// StatusCode request HTTP.
+const NotFoundException = require('../exception/notFoundException');// Exception error not found.
 
 // POST Save product.
 exports.post = async (req, res, next) => {
@@ -14,9 +17,12 @@ exports.post = async (req, res, next) => {
         product.attribute = data.attribute;
         product.category = data.category;
         result = await modelProduct.productPost(product);
-        response.responseApi(result, req, res);
+        responseHttp.responseAPI.success(result, res, statusCodeHttp.CREATED);
     } catch (error) {
-        response.responseApi(error.message, req, res);
+        if (error instanceof NotFoundException)
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.NOT_FOUND, true);
+        else
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.BAD_REQUEST);
     }
 }
 
@@ -25,9 +31,12 @@ exports.get = async (req, res, next) => {
     try {
         const Products = require('mongoose').model('Product');
         let result = await modelProduct.productGet(Products);
-        response.responseApi(result, req, res);
+        responseHttp.responseAPI.success(result, res, statusCodeHttp.OK);
     } catch (error) {
-        response.responseApi(error.message, req, res);
+        if (error instanceof NotFoundException)
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.NOT_FOUND, true);
+        else
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.BAD_REQUEST);
     }
 }
 
@@ -37,9 +46,12 @@ exports.getById = async (req, res, next) => {
     try {
         const Products = require('mongoose').model('Product');
         let result = await modelProduct.productGetById(Products, id);
-        response.responseApi(result, req, res);
+        responseHttp.responseAPI.success(result, res, statusCodeHttp.OK);
     } catch (error) {
-        response.responseApi(error.message, req, res);
+        if (error instanceof NotFoundException)
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.NOT_FOUND, true);
+        else
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.BAD_REQUEST);
     }
 }
 
@@ -57,9 +69,12 @@ exports.update = async (req, res, next) => {
         product.attribute = data.attribute;
         product.category = data.category;
         let result = await modelProduct.productUpdate(product, id);
-        response.responseApi(result, req, res);
+        responseHttp.responseAPI.success(result, res, statusCodeHttp.OK);
     } catch (error) {
-        response.responseApi(error.message, req, res);
+        if (error instanceof NotFoundException)
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.NOT_FOUND, true);
+        else
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.BAD_REQUEST);
     }
 }
 
@@ -69,8 +84,11 @@ exports.delete = async (req, res, next) => {
     try {
         const Products = require('mongoose').model('Product');
         let result = await modelProduct.productDelete(Products, id);
-        response.responseApi(result, req, res);
+        responseHttp.responseAPI.success(result, res, statusCodeHttp.OK);
     } catch (error) {
-        response.responseApi(error.message, req, res);
+        if (error instanceof NotFoundException)
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.NOT_FOUND, true);
+        else
+            responseHttp.responseAPI.error(error.message, res, statusCodeHttp.BAD_REQUEST);
     }
 }

@@ -34,7 +34,6 @@ class DataBaseService {
         return new Promise((resolve, reject) => {
             let valuesUpdate = { $set: {name: "Iphone"} };
             collection.updateOne({ '_id': idCollection }, valuesUpdate, function (error, object) {
-                console.log(object);
                 !error ? resolve(object) : reject(error);
             });
         });

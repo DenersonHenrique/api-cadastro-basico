@@ -1,0 +1,190 @@
+---
+swagger: "2.0"
+info:
+  description: Api CRUD node e mongo db.
+  version: 1.0.0
+  title: Api CRUD Node com Mongo
+  contact:
+    email: denersonh@gmail.com
+host: virtserver.swaggerhub.com
+basePath: /InfoSwagger/node-api-CRUD/1.0.0
+tags:
+- name: Produtos
+  description: Produtos para cadastro.
+schemes:
+- http
+paths:
+  /produto:
+    get:
+      tags:
+      - Produtos
+      summary: Buscar produtos.
+      description: |
+        Request para buscar lista de produtos cadastrados no banco de dados.
+      operationId: get
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        "200":
+          description: Lista de produtos cadastrados no banco de dados.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/responseProduto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/inline_response_400'
+    post:
+      tags:
+      - Produtos
+      summary: Salvar produto.
+      description: Adicionar produto no banco de dados.
+      operationId: post
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body produto item
+        description: Informações do produto para adicionar ao banco de dados.
+        required: false
+        schema:
+          $ref: '#/definitions/postProduto'
+      responses:
+        "201":
+          description: Success - Item Criado.
+          schema:
+            $ref: '#/definitions/responseProduto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/inline_response_400'
+  /produto/{id}:
+    get:
+      tags:
+      - Produtos
+      summary: Buscar produto por id.
+      description: |
+        Request para buscar produto cadastrado no banco de dados.
+      operationId: getById
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: Id do produto para ser selecionado.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Lista de produtos cadastrados no banco de dados.
+          schema:
+            $ref: '#/definitions/responseProduto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/inline_response_400'
+    put:
+      tags:
+      - Produtos
+      summary: Atualizar produto.
+      description: Atualizar produto do banco de dados.
+      operationId: put
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: Id do produto para atualizar.
+        required: true
+        type: string
+      - in: body
+        name: body produto item
+        description: Informações do produto para adicionar ao banco de dados.
+        required: false
+        schema:
+          $ref: '#/definitions/postProduto'
+      responses:
+        "201":
+          description: Success - Item Criado.
+          schema:
+            $ref: '#/definitions/inline_response_201'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/inline_response_400'
+    delete:
+      tags:
+      - Produtos
+      summary: Deletar produto.
+      description: Deletar produto do banco de dados.
+      operationId: delete
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: Id do produto para deletar.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success - Item excluído.
+          schema:
+            $ref: '#/definitions/inline_response_201'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/inline_response_400'
+definitions:
+  postProduto:
+    type: object
+    properties:
+      name:
+        type: string
+      value:
+        type: integer
+      color:
+        type: string
+      brand:
+        type: string
+      attribute:
+        type: string
+      category:
+        type: string
+  responseProduto:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      value:
+        type: integer
+      color:
+        type: string
+      brand:
+        type: string
+      attribute:
+        type: string
+      category:
+        type: string
+  inline_response_400:
+    type: object
+    properties:
+      message:
+        type: string
+  inline_response_201:
+    type: object
+    properties:
+      message:
+        type: string
+      id:
+        type: string
