@@ -3,7 +3,7 @@
 'use strict';
 
 class NotFoundException {
-    /** Construtor */
+    /** Constructor */
   constructor(message){ 
     this.message = message || 'Not Found';
   } 

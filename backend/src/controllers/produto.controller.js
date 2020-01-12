@@ -27,7 +27,7 @@ exports.post = async (req, res, next) => {
     }
 }
 
-// GET products list.
+// GET Products list.
 exports.get = async (req, res, next) => {
     try {
         const product = require('mongoose').model('Product');

@@ -17,11 +17,11 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({extended: true}));
 
-// The Swagger document
+//The Swagger document
 const spec = fs.readFileSync(path.join(__dirname, '../src/swagger/swagger.yaml'), 'utf8');
 const swaggerDoc = jsyaml.safeLoad(spec);
 
-// Initialize the Swagger middleware -- http://localhost:3000/api-docs/
+//Initialize the Swagger middleware -- http://localhost:3000/api-docs/
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     app.use('/api-docs', swaggerUIExpress.serve, swaggerUIExpress.setup(swaggerDoc, true));
 
@@ -32,7 +32,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     app.use(middleware.swaggerUi());
 });
 
-// Aplication routes.
+//Aplication routes.
 const routes = require('../config/routes');
 app.use('/item', routes);
 

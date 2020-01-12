@@ -1,23 +1,23 @@
 # node-api-CRUD
 
-Node | Mongo | Docker - CRUD básico.
-Api de Cadastro simples com node e mongodb.
-Aplicação executável em ambiente docker.
+Node | Mongo | Docker - CRUD basic.
+Registration api with NodeJS and MongoDB.
+Application executable at a environment Docker.
 
 ### Prerequisities
 
-[Node JS](https://nodejs.org/en/download/) e [Mongo DB](https://www.mongodb.com/).
+[Node JS](https://nodejs.org/en/download/) and [Mongo DB](https://www.mongodb.com/).
 
 ### Installing
 
-Iniciar aplicação em um ambiente [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).
-* No terminal acessar diretório raiz do projeto;
-* Executar comando 'docker-compose up'.
+Initialize application at a environment [Docker](httpsMongo://docs.docker.com/docker-for-windows/install/).
+* At the terminal access project root directory;
+* Execute command 'docker-compose up'.
 
 ## Authors
 
-* **Denerson Henrique** - *Trabalho Inicial* - [Denin](https://github.com/DenersonHenrique).
+* **Denerson Henrique** - *Initial work* - [Denin](https://github.com/DenersonHenrique).
 
 ## License
 
-Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.txt](LICENSE.txt) para obter detalhes.
+This project is licensed under the MIT license - see the file  [LICENSE.txt](LICENSE.txt) for details.
