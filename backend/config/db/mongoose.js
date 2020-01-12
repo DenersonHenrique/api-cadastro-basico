@@ -5,17 +5,17 @@ const mongoose = require('mongoose');
 
 module.exports = function () {
     mongoose.Promise = global.Promise;
-    //Conexão com mongo db.
+    //Connection with mongodb
     let db = mongoose.connect(config.db, { promiseLibrary: require('bluebird'), useUnifiedTopology: true, useNewUrlParser: true });
 
     db.then((conn) => {
-        console.log('Conectado com MongoDB');
+        console.log('Connected with MongoDB');
     })
         .catch((err) => {
             console.log(err);
         })
 
-    // Registrar schemas e modelos
+    //Register schemas and models.
     require('./product.model');
 
     return db;

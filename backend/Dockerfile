@@ -1,10 +1,12 @@
 FROM node:12.9.1
 
+# Create directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-
-RUN npm install
+# Install dependences
+COPY package.json /usr/src/app/
+# RUN npm install
 
 ENV NODE_ENV=production
 

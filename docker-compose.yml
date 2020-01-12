@@ -5,6 +5,7 @@ services:
     container_name: mongodb.api.cadastro
     ports:
       - 3000:3001
+    network_mode: host
   backend:
     build: ./backend
     container_name: backend.api.cadastro
@@ -14,4 +15,4 @@ services:
       - 3002:3000
     depends_on:
       - database
-    command: bash -c "npm i && npm start"
+    command: bash -c "ls -l && npm start"
