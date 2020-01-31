@@ -89,6 +89,8 @@ exports.delete = async (req, res, next) => {
         const product = require('mongoose').model('Product');
         let dataBaseService = new DataBaseService();
         let result = await dataBaseService.deleteById(product, id);// Delete item by id.
+        if (result.deletedCount > 0)
+            result.message =  `Registro ${id} excluido com sucesso`;
         responseHttp.responseAPI.success(result, res, statusCodeHttp.OK);
     } catch (error) {
         if (error instanceof NotFoundException)

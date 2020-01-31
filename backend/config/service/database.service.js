@@ -1,8 +1,7 @@
 'use strict'
-const mongoose = require('../db/mongoose');
 
 class DataBaseService {
-    constructor() {}
+    constructor() { }
     // Save item.
     save(collection) {
         return new Promise((resolve, reject) => {
@@ -24,7 +23,7 @@ class DataBaseService {
     // Get item by id.
     getById(collection, idCollection) {
         return new Promise((resolve, reject) => {
-            collection.findOne({'_id': idCollection}, function (error, object) {
+            collection.findOne({ '_id': idCollection }, function (error, object) {
                 !error ? resolve(object) : reject(error);
             });
         });
@@ -32,8 +31,10 @@ class DataBaseService {
     // Update item
     updateById(collection, idCollection) {
         return new Promise((resolve, reject) => {
-            let valuesUpdate = { $set: {name: "Iphone"} };
-            collection.updateOne({ '_id': idCollection }, valuesUpdate, function (error, object) {
+            const ObjectId = require('mongodb').ObjectId;
+            // let id = new ObjectId(idCollection);
+            let valuesUpdate = { $set: { name: collection.name } }; 
+            collection.updateOne({ _id: idCollection}, valuesUpdate, function (error, object) {
                 !error ? resolve(object) : reject(error);
             });
         });
